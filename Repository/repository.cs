@@ -32,8 +32,13 @@ namespace bookParser.repository{
             }
         }
 
-        public void makeQuery(){
-            throw new NotImplementedException();
+        public void addTest(){
+            OpenConnection();
+            string cmdText = "INSERT INTO tag(name) values(@name)";
+            var query = new NpgsqlCommand(cmdText, _connection);
+            query.Parameters.AddWithValue("@name", "Alex");
+            query.ExecuteNonQuery();
+            CloseConnection();
         }
     }
 }
