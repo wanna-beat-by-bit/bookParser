@@ -4,5 +4,6 @@ namespace bookParser.Controllers{
     interface IHandlerLogic{
         public IActionResult getAllBookInfo();
         public IActionResult getAllowedBooks();
+        public IActionResult getBooksInfo();
     }
 }

@@ -44,8 +44,9 @@ namespace bookParser.Parser
                 bookInfo.Add("Description",   $"{getDescription(document)}");
                 bookInfo.Add("Year",          $"{getYear(document)}");
                 bookInfo.Add("Image",         $"{getImage(document)}");
-                bookInfo.Add("Pages",              $"{getPages(document)}");
-                bookInfo.Add("Genre",        $"{getGenre(document)}");
+                bookInfo.Add("Pages",         $"{getPages(document)}");
+                bookInfo.Add("Genre",         $"{getGenre(document)}");
+                bookInfo.Add("Isbn",          $"{isbn}");
 
                 resultArray.Add(bookInfo);
                 bookInfo = new Dictionary<string, string>();

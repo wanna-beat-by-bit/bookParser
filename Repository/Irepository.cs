@@ -4,5 +4,7 @@ namespace bookParser.repository{
         void OpenConnection();
         void CloseConnection();
         void addTest();
+        void addBookInfo(Dictionary<string, string> info);
+        List<Dictionary<string, string>> getBooksInfo();
     }
 }

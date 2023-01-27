@@ -1,11 +1,14 @@
 using bookParser.repository;
+using bookParser.Parser;
 
 namespace bookParser.Logic{
     public class BLogic : IBLogic
     {
         private readonly IRepository _dbRepo;
-        public BLogic(IRepository dbRepo){
+        private readonly IParser _parser;
+        public BLogic(IRepository dbRepo, IParser parser){
             _dbRepo = dbRepo;
+            _parser = parser;
         }
 
         public void readAllBooksByDomain(string domain){
@@ -13,6 +16,12 @@ namespace bookParser.Logic{
         }
         public void logicTest(){
             _dbRepo.addTest();
+        }
+        public void addAllBookInfo(){
+            List<Dictionary<string, string>> booksInfo = _parser.parse();
+            foreach(var info in booksInfo){
+                _dbRepo.addBookInfo(info);
+            }
         }
     }
 }

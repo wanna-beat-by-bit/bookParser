@@ -16,11 +16,11 @@ namespace bookParser.Controllers{
         private readonly IBLogic _bLogic;
         private readonly IParser _parser;
         private readonly parserIgraslov _parserIgraslov;
-        //private static object? aWord;
-        public TestController(IRepository dbRepo, IBLogic bLogic, IParser parser){
+        public TestController(IRepository dbRepo, IBLogic bLogic, IParser parser, parserIgraslov parserIgraslov){
             _dbRepo = dbRepo;
             _bLogic = bLogic;
             _parser = parser;
+            _parserIgraslov = parserIgraslov;
         }
         
         [HttpGet("getAllBookInfo")]
@@ -35,6 +35,18 @@ namespace bookParser.Controllers{
         {
             string json = JsonConvert.SerializeObject(_parserIgraslov.parse(amount), Formatting.Indented);
             System.IO.File.WriteAllText("isbns.json", json);
+            return Ok(json);
+        }
+
+        [HttpPost("addAllBookInfo")]
+        public IActionResult addAllBookInfo(){
+            _bLogic.addAllBookInfo();
+            return Ok();
+        }
+
+        [HttpGet("getBooksInfo")]
+        public IActionResult getBooksInfo(){
+            var json = JsonConvert.SerializeObject(_dbRepo.getBooksInfo(), Formatting.Indented);
             return Ok(json);
         }
 

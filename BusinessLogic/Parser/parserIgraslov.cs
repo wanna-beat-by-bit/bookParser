@@ -5,9 +5,8 @@ using AngleSharp.Html.Parser;
 using System;
 
 namespace bookParser.Parser{
-    class parserIgraslov 
+    public class parserIgraslov 
     {
-        
         public static IDocument GetDocument(string url)
         {
             var config = Configuration.Default.WithDefaultLoader();

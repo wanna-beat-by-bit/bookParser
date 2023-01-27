@@ -1,0 +1,8 @@
+# all info about book
+select book.name as book, author.name as author, book.year, book.description, book.isbn,
+    book.pages, book.imagePath, genre.name
+    from bookToAuthor 
+    join book on bookToAuthor.bookId = book.id 
+    join author on author.id = bookToAuthor.id
+    join bookToGenre on bookToGenre.bookId = book.id
+    join genre on genre.id = bookToGenre.genreId; 

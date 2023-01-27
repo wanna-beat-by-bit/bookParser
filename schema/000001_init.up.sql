@@ -5,7 +5,7 @@ CREATE TABLE book
     name varchar(128) not null,
     year int not null,
     description text not null unique,
-    isbn varchar(16) not null,
+    isbn varchar(32) not null,
     pages int not null,
     imagePath varchar(128) not null
 );
