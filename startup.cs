@@ -32,7 +32,8 @@ namespace bookParser.startup{
                 options.UseNpgsql(builder.ConnectionString));
             services.AddScoped<IRepository>(_ => new Repository(builder.ConnectionString));
             services.AddScoped<IBLogic, BLogic>();
-            services.AddScoped<IParser, parserIgraslov>();
+            services.AddScoped<IParser, parserLabirint>();
+            services.AddScoped<parserIgraslov>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -15,6 +15,7 @@ namespace bookParser.Controllers{
         private readonly IRepository _dbRepo;
         private readonly IBLogic _bLogic;
         private readonly IParser _parser;
+        private readonly parserIgraslov _parserIgraslov;
         //private static object? aWord;
         public TestController(IRepository dbRepo, IBLogic bLogic, IParser parser){
             _dbRepo = dbRepo;
@@ -22,17 +23,17 @@ namespace bookParser.Controllers{
             _parser = parser;
         }
         
-        [HttpGet("addToDomains/{amount}")]
-        public IActionResult addToDomains([/*FromBody*/FromRoute] int amount)
+        [HttpGet("getAllBookInfo")]
+        public IActionResult getAllBookInfo()
         {
-            
-            return Ok(new {giverNumber = amount});
+            string json = JsonConvert.SerializeObject(_parser.parse(), Formatting.Indented); 
+            return Ok(json);
         }
 
         [HttpGet("getAllowedBooks/{amount}")]
         public IActionResult readBooks([FromRoute] int amount)
         {
-            string json = JsonConvert.SerializeObject(_parser.parse(amount), Formatting.Indented);
+            string json = JsonConvert.SerializeObject(_parserIgraslov.parse(amount), Formatting.Indented);
             System.IO.File.WriteAllText("isbns.json", json);
             return Ok(json);
         }
