@@ -1,7 +1,7 @@
 namespace bookParser.Models{
-    public class BookToTag{
+    public class BookToGenre{
         public int Id {get; set;}
         public int BookId {get; set;}
-        public int TagId {get; set;}
+        public int GenreId {get; set;}
     }
 }

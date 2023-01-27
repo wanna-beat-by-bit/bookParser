@@ -10,7 +10,9 @@ namespace bookParser.Models{
         public DbSet<Book>? book { get; set; }
         public DbSet<BookToAuthor>? bookToAuthor { get; set; }
         public DbSet<BookToTag>? bookToTag { get; set; }
+        public DbSet<BookToTag>? bookToGenre { get; set; }
         public DbSet<Tag>? Tag { get; set; }
+        public DbSet<Tag>? Genre { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
