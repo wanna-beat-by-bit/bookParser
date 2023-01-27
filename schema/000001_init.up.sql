@@ -35,3 +35,16 @@ CREATE TABLE bookToTag
     bookId int references book (id) on delete cascade not null,
     tagId int references tag (id) on delete cascade not null
 );
+
+CREATE TABLE genre
+(
+    id serial not null unique,
+    name varchar(64) not null
+);
+
+CREATE TABLE bookToGenre
+(
+    id serial not null unique,
+    bookId int references book (id) on delete cascade not null,
+    genreId int references genre (id) on delete cascade not null
+);
