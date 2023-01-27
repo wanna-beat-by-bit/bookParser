@@ -1,10 +1,12 @@
 ﻿
 using AngleSharp;
 using AngleSharp.Dom;
+using AngleSharp.Html.Parser;
 using System;
 
-namespace Parser{
-    class testParser{
+namespace bookParser.Parser{
+    class parserIgraslov : IParser
+    {
         
         public static IDocument GetDocument(string url)
         {
@@ -12,19 +14,41 @@ namespace Parser{
             var context = BrowsingContext.New(config);
             return context.OpenAsync(url).Result;
         }
-        public void parseIgraslov(){
-            var url = "https://igraslov.store/shop/?products-per-page=all";
-            var document = GetDocument(url);
+        public bool isFileOnLocal(){
+            FileInfo file = new FileInfo("pages/igraslov.html");
+            if(file.Exists)
+                return true;
+            else
+                return false;
+        }
+        public IDocument handleDocument(){
+            if(!isFileOnLocal()){
+                var url = "https://igraslov.store/shop/?products-per-page=all";
+                IDocument document = GetDocument(url);
+                return document;
+            }
+            else{
+                string filePath = "pages/igraslov.html";
+                string html = File.ReadAllText(filePath);
+                var parser = new HtmlParser();
+                IDocument document = parser.ParseDocument(html);
+                return document;
+            }
+
+        }
+        public List<string> parse(int max){
+            var document = handleDocument();
             var links = document.QuerySelectorAll("a");
             var linksWihtoutClass = links.Where(link => !link.HasAttribute("class"));
-            int maximum = 5;
+            int maximum = max;
+            List<string> isbns = new List<string> {};
             foreach(var link in linksWihtoutClass){
                 var href = link.GetAttribute("href");
                 if((href != null && href.Contains("/product/") && maximum > 0)){
-                    Console.WriteLine(getIsbn(href));
+                    isbns.Add(getIsbn(href));
                     maximum--;
                 }
-                if(maximum < 0){
+                if(maximum == 0){
                     break;
                 }
               //if(link.TextContent.Contains("Кэмерон")){
@@ -34,12 +58,13 @@ namespace Parser{
               
 
             }
+            return isbns;
         }
         public static string getIsbn(string url){
             //var url = "https://igraslov.store/product/ellis-b-i-amerikanskij-psihopat-azbuka-myagk/";
             var document = GetDocument(url);
             var trTags = document.QuerySelectorAll("tr");
-            AngleSharp.Dom.IElement result;
+            AngleSharp.Dom.IElement? result;
             foreach (var tr in trTags)
             {
                 var th = tr.QuerySelector("th");

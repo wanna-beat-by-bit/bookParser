@@ -4,38 +4,43 @@ using Npgsql;
 
 using bookParser.repository;
 using bookParser.Logic;
+using bookParser.Parser;
+using Newtonsoft.Json;
 
 namespace bookParser.Controllers{
     [ApiController]
-    [Route("api/testing")]
+    [Route("api/")]
     public class TestController : ControllerBase
     {
         private readonly IRepository _dbRepo;
         private readonly IBLogic _bLogic;
-        private static object? aWord;
-        public TestController(IRepository dbRepo, IBLogic bLogic){
+        private readonly IParser _parser;
+        //private static object? aWord;
+        public TestController(IRepository dbRepo, IBLogic bLogic, IParser parser){
             _dbRepo = dbRepo;
             _bLogic = bLogic;
+            _parser = parser;
         }
         
-        [HttpPost("addToDomains")]
-        public IActionResult addToDomains([FromBody] object data)
+        [HttpGet("addToDomains/{amount}")]
+        public IActionResult addToDomains([/*FromBody*/FromRoute] int amount)
         {
-            aWord = data; 
-            return Ok(new {Status = aWord});
+            
+            return Ok(new {giverNumber = amount});
         }
 
-        [HttpPost("readBooks")]
-        public IActionResult readBooks([FromBody] object data)
+        [HttpGet("getAllowedBooks/{amount}")]
+        public IActionResult readBooks([FromRoute] int amount)
         {
-            aWord = data; 
-            return Ok(new {Status = aWord});
+            string json = JsonConvert.SerializeObject(_parser.parse(amount), Formatting.Indented);
+            System.IO.File.WriteAllText("isbns.json", json);
+            return Ok(json);
         }
 
         [HttpGet("getAllBooks")]
         public IActionResult getAllBooks(){
 
-            return Ok(new {content = aWord});
+            return Ok();
         }
 
         [HttpGet("logicTest")]

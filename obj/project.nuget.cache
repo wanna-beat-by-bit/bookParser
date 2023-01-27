@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FSdH84u62chpLHH6Nj5zy2eUJO4e6rXaYo92kg18ulfuhuEotZyDm/TnZ0gT3cXUxCRCkFDF+/OrVcfy01rdiQ==",
+  "dgSpecHash": "jIFT6Z6EtTUU7jx8jwR9Q+8SnA5EZK5MTfJYlO44WyyelxVpryDYdOUwKDG8UM8KpCbsRe3ZdpZ8D+ymEauqJA==",
   "success": true,
   "projectFilePath": "/home/alex/Documents/projects/bookParser/bookParser.csproj",
   "expectedPackageFiles": [
+    "/home/alex/.nuget/packages/anglesharp/1.0.1/anglesharp.1.0.1.nupkg.sha512",
     "/home/alex/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/home/alex/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
     "/home/alex/.nuget/packages/microsoft.aspnetcore/2.2.0/microsoft.aspnetcore.2.2.0.nupkg.sha512",
@@ -205,7 +206,7 @@
     "/home/alex/.nuget/packages/system.security.permissions/5.0.0/system.security.permissions.5.0.0.nupkg.sha512",
     "/home/alex/.nuget/packages/system.security.principal.windows/5.0.0/system.security.principal.windows.5.0.0.nupkg.sha512",
     "/home/alex/.nuget/packages/system.text.encoding/4.3.0/system.text.encoding.4.3.0.nupkg.sha512",
-    "/home/alex/.nuget/packages/system.text.encoding.codepages/5.0.0/system.text.encoding.codepages.5.0.0.nupkg.sha512",
+    "/home/alex/.nuget/packages/system.text.encoding.codepages/7.0.0/system.text.encoding.codepages.7.0.0.nupkg.sha512",
     "/home/alex/.nuget/packages/system.text.encoding.extensions/4.3.0/system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "/home/alex/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
     "/home/alex/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
