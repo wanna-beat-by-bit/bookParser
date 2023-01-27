@@ -11,9 +11,6 @@ namespace bookParser.Logic{
             _parser = parser;
         }
 
-        public void readAllBooksByDomain(string domain){
-            throw new NotImplementedException(); 
-        }
         public void addAllBookInfo(){
             List<Dictionary<string, string>> booksInfo = _parser.parse();
             foreach(var info in booksInfo){
