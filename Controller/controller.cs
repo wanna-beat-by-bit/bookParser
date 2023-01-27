@@ -31,7 +31,7 @@ namespace bookParser.Controllers{
         }
 
         [HttpGet("getAllowedBooks/{amount}")]
-        public IActionResult readBooks([FromRoute] int amount)
+        public IActionResult getAllowedBooks([FromRoute] int amount)
         {
             string json = JsonConvert.SerializeObject(_parserIgraslov.parse(amount), Formatting.Indented);
             System.IO.File.WriteAllText("isbns.json", json);
