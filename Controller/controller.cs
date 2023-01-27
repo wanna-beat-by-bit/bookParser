@@ -38,17 +38,11 @@ namespace bookParser.Controllers{
             return Ok(json);
         }
 
-        [HttpGet("getAllBooks")]
-        public IActionResult getAllBooks(){
-
-            return Ok();
-        }
-
-        [HttpGet("logicTest")]
-        public IActionResult logicTest(){
-            _bLogic.logicTest();
-            return Ok();
-        }
+        //[HttpGet("logicTest")]
+        //public IActionResult logicTest(){
+        //    _bLogic.logicTest();
+        //    return Ok();
+        //}
 
     }
 }

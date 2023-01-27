@@ -32,7 +32,6 @@ namespace bookParser.Parser
 
             foreach(var isbn in isbns){
                 Dictionary<string,string> bookInfo = new Dictionary<string, string>();
-                Console.WriteLine(isbn);
                 var url = $"https://www.labirint.ru/search/{isbn}/?stype=0";
                 var document = GetDocument(url);
                 var link = document.QuerySelector("a.product-title-link") as IHtmlAnchorElement;
@@ -49,7 +48,6 @@ namespace bookParser.Parser
                 bookInfo.Add("Genre",        $"{getGenre(document)}");
 
                 resultArray.Add(bookInfo);
-                Console.WriteLine(bookInfo["Author"]);
                 bookInfo = new Dictionary<string, string>();
             }
             return resultArray;

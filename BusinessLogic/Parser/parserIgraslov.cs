@@ -51,17 +51,10 @@ namespace bookParser.Parser{
                 if(maximum == 0){
                     break;
                 }
-              //if(link.TextContent.Contains("Кэмерон")){
-              //    Console.WriteLine("helo");
-              //    //Console.WriteLine(link.GetAttribute("href"));
-              //}
-              
-
             }
             return isbns;
         }
         public static string getIsbn(string url){
-            //var url = "https://igraslov.store/product/ellis-b-i-amerikanskij-psihopat-azbuka-myagk/";
             var document = GetDocument(url);
             var trTags = document.QuerySelectorAll("tr");
             AngleSharp.Dom.IElement? result;
@@ -80,8 +73,6 @@ namespace bookParser.Parser{
                 }
             }
             return "empty";
-
         }
-
     }
 }
