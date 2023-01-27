@@ -49,12 +49,5 @@ namespace bookParser.Controllers{
             var json = JsonConvert.SerializeObject(_dbRepo.getBooksInfo(), Formatting.Indented);
             return Ok(json);
         }
-
-        //[HttpGet("logicTest")]
-        //public IActionResult logicTest(){
-        //    _bLogic.logicTest();
-        //    return Ok();
-        //}
-
     }
 }
